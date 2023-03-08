@@ -1,6 +1,6 @@
 # Proxmox Provider - Variables
 
-variable "proxmox-api-url" {
+variable "proxmox-endpoint" {
   type        = string
   description = "Proxmox API URL"
 }

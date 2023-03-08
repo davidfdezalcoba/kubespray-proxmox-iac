@@ -1,7 +1,7 @@
 #cloud-config
 package_upgrade: true
-  # packages:
-  #   - qemu-guest-agent
+packages:
+  - qemu-guest-agent
 
 timezone: Europe/Madrid
 users:
@@ -14,7 +14,7 @@ users:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCJhkB3q58hwj34w8Hj8dwOBioTP4NpfVE68qJ0mS5uUgKkCaflBcE8wzQLfbG/28JpiaDdaL9BGr/rpSnJSGeK7bPcaNcYt4D5MTKcZ1GhWCGYWMwuFJHEA7r7pWOfIYLp2Ji9yZiSJWsNFXXRnptzZdg65z8rhhO2eYgJ9ebftkarH8wyTHWAWBFdgfSopIpE2FtbsID+J2lUZLHZ/2RuOteXVKbieiFRVr+MAopK0E0RTMFwF2hALcNlEYr10NYbJoFmm+1d4NYJB+F1bSL9cEPW95uUB/x887+ATkghfvB5vvDyea6gsjyUyd24NdDW5xxvlGi9RvJF+6afdZlT2qzKeXQA3nuM9DFiUOE7D4/pVK4ekxwSUlZxLNapr8jzuF/yidqjUyiCm701EtwuzbeFytvIlw69G2xm4UbwVqAAXgtcLcTQ89BziJVOI3cyJE0W9shU9QlqqaNYN3hO9Bb8CyBGMX+kB4OSbyajtrtl9T7qdf3Mv7TbLttty5E=
 
 power_state:
-    delay: now
-    mode: reboot
-    message: Rebooting after cloud-init completion
-    condition: true
+  delay: now
+  mode: reboot
+  message: Rebooting after cloud-init completion
+  condition: true
