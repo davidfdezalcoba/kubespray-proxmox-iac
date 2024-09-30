@@ -1,0 +1,92 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+  children:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    etcd:
+      children:
+        kube_control_plane:
+    kube_node:
+      vars:
+        node_labels:
+          node-role.kubernetes.io/worker: ""
+        node_taints: []
+      children:
+        kube_worker:
+    kube_control_plane:
+      vars:
+        node_labels: {}
+        node_taints: []
+      hosts:
+        master-00:
+          ansible_host: 192.168.1.200
+          nics:
+            - addresses:
+              - 192.168.1.200/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
+        master-01:
+          ansible_host: 192.168.1.201
+          nics:
+            - addresses:
+              - 192.168.1.201/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
+        master-02:
+          ansible_host: 192.168.1.202
+          nics:
+            - addresses:
+              - 192.168.1.202/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
+    kube_worker:
+      hosts:
+        worker-00:
+          ansible_host: 192.168.1.210
+          nics:
+            - addresses:
+              - 192.168.1.210/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
+        worker-01:
+          ansible_host: 192.168.1.211
+          nics:
+            - addresses:
+              - 192.168.1.211/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
+        worker-02:
+          ansible_host: 192.168.1.212
+          nics:
+            - addresses:
+              - 192.168.1.212/24
+              routes:
+              - to: default
+                via: "192.168.1.1"
+              nameservers:
+                addresses:
+                - "192.168.1.69"
