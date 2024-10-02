@@ -1,4 +1,4 @@
-kube_version: v1.29.5
+kube_version: v1.30.4
 cluster_name: cluster.local
 container_manager: containerd
 system_upgrade_reboot: on-upgrade
