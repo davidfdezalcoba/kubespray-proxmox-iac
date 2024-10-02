@@ -1,0 +1,52 @@
+kube_version: v1.27.5
+cluster_name: cluster.local
+container_manager: containerd
+system_upgrade_reboot: on-upgrade
+
+etcd_deployment_type: host
+etcd_retries: 10
+
+kube_network_plugin: calico
+calico_ipip_mode: Always
+calico_vxlan_mode: Never
+calico_network_backend: bird
+calico_apiserver_enabled: true
+
+kube_proxy_mode: ipvs
+kube_service_addresses: 10.233.0.0/18
+kube_pods_subnet: 10.233.64.0/18
+kube_network_node_prefix: 24
+kubelet_max_pods: 110
+
+dns_mode: coredns
+enable_nodelocaldns: true
+resolvconf_mode: host_resolvconf
+kube_resolv_conf: "/etc/resolv.conf"
+nameservers: ["192.168.1.69"]
+
+### Hardening ###
+kube_encrypt_secret_data: true
+kube_encryption_algorithm: secretbox
+kubernetes_audit: true
+audit_log_maxage: 30
+audit_log_maxbackups: 10
+audit_log_maxsize: 100
+kube_apiserver_request_timeout: "1m0s"
+kube_controller_manager_bind_address: 127.0.0.1 
+kube_kubeadm_scheduler_extra_args:
+  profiling: false
+kube_scheduler_bind_address: 127.0.0.1
+
+kube_apiserver_enable_admission_plugins:
+  - AlwaysPullImages
+  - NodeRestriction
+
+podsecuritypolice_enabled: false
+kubelet_event_record_qps: 5
+tls_cipher_suites:
+  - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+  - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+  - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
