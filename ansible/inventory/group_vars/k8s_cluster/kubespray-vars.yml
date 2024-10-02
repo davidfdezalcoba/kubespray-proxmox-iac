@@ -1,4 +1,4 @@
-kube_version: v1.28.14
+kube_version: v1.29.5
 cluster_name: cluster.local
 container_manager: containerd
 system_upgrade_reboot: on-upgrade
@@ -36,17 +36,8 @@ kube_controller_terminated_pod_gc_threshold: 50
 kube_scheduler_bind_address: 127.0.0.1
 
 kube_apiserver_enable_admission_plugins:
-  - EventRateLimit
-  - AlwaysPullImages
-  - ServiceAccount
-  - NamespaceLifecycle
-  - NodeRestriction
-  - LimitRanger
-  - ResourceQuota
-  - MutatingAdmissionWebhook
-  - ValidatingAdmissionWebhook
-  - PodNodeSelector
-  - PodSecurity
+  - AlwaysPullImages                            
+  - NodeRestriction                             
 
 kubelet_event_record_qps: 1
 tls_cipher_suites:
