@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+# use virtualenv to install all python requirements
+VENVDIR=venv
+/usr/bin/python3 -m venv $VENVDIR
+source $VENVDIR/bin/activate
+pip install -r kubespray/requirements.txt 1> /dev/null
+ansible-playbook -b "$@"
