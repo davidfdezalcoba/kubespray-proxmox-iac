@@ -3,10 +3,6 @@ all:
     localhost:
       ansible_connection: local
   children:
-    k8s_cluster:
-      children:
-        kube_control_plane:
-        kube_node:
     etcd:
       children:
         kube_control_plane:
@@ -32,7 +28,7 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"
         master-01:
           ansible_host: 192.168.1.201
           nics:
@@ -43,7 +39,7 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"
         master-02:
           ansible_host: 192.168.1.202
           nics:
@@ -54,7 +50,7 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"
     kube_worker:
       hosts:
         worker-00:
@@ -67,7 +63,7 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"
         worker-01:
           ansible_host: 192.168.1.211
           nics:
@@ -78,7 +74,7 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"
         worker-02:
           ansible_host: 192.168.1.212
           nics:
@@ -89,4 +85,4 @@ all:
                 via: "192.168.1.1"
               nameservers:
                 addresses:
-                - "192.168.1.69"
+                - "192.168.1.246"

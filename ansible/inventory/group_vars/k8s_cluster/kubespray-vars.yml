@@ -1,4 +1,4 @@
-kube_version: v1.30.4
+kube_version: v1.31.4
 cluster_name: cluster.local
 container_manager: containerd
 system_upgrade_reboot: on-upgrade
@@ -11,6 +11,7 @@ calico_ipip_mode: Never
 calico_vxlan_mode: Always
 calico_network_backend: vxlan
 calico_apiserver_enabled: true
+calico_allow_ip_forwarding: true
 
 kube_proxy_mode: ipvs
 kube_service_addresses: 10.233.0.0/18
